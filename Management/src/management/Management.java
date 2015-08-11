@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import management.commandparser.ParserManager;
 import management.model.User;
 import management.reader.UserReader;
 import management.util.ReaderUtils;
@@ -20,12 +21,14 @@ public class Management {
 
     public static void main(String[] args) {
         init();
+        ParserManager.startParsingCommands(actualUser);
     }
 
     static void init() {
         System.out.print("Enter username: ");
         String userName = commandScanner.nextLine();
         String command;
+
         if (UserReader.isUserCreated(userName)) {
             actualUser = UserReader.readUser(userName);
             System.out.println("Login completed");
@@ -43,15 +46,17 @@ public class Management {
                 while (true) {
                     System.out.println("Enter username again: ");
                     userName = commandScanner.next();
-                    if (UserReader.isUserCreated(userName)){
+                    if (UserReader.isUserCreated(userName)) {
                         actualUser = UserReader.readUser(userName);
                         break;
                     }
                 }
             }
         }
-        System.out.println(actualUser);
-        
+        if (!actualUser.isAdmin()) {
+            System.out.println(actualUser);
+        }
     }
 
+    
 }

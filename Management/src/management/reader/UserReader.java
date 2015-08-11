@@ -13,6 +13,7 @@ import management.model.Animal;
 import management.model.Cat;
 import management.model.Dog;
 import management.model.User;
+import management.model.UserAdmin;
 
 /**
  *
@@ -20,22 +21,21 @@ import management.model.User;
  */
 public class UserReader {
 
+    private static String USER_DATA_PATH = "userdata/users/";
+    
     static public boolean isUserCreated(String username) {
-        File userFile = new File(username);
+        File userFile = new File(USER_DATA_PATH + username);
         return userFile.exists();
     }
 
     static public User createNewUser(String username) throws IOException {
         User user = new User(username);
-        File userFile = new File(username);
+        File userFile = new File(USER_DATA_PATH + username);
 
         if (userFile.exists()) {
             userFile.delete();
         }
         userFile.createNewFile();
-
-        //TODO remove костыль
-        user.getCats().add(new Cat("pisun"));
 
         writeUser(userFile, user);
 
@@ -43,8 +43,11 @@ public class UserReader {
     }
 
     static public User readUser(String username) {
+        if(username.equalsIgnoreCase("admin")){
+            return new UserAdmin("admin");
+        }
         try {
-            File userFile = new File(username);
+            File userFile = new File(USER_DATA_PATH + username);
             Scanner sc = new Scanner(userFile);
             String name = sc.nextLine();
             int money = Integer.parseInt(sc.nextLine());

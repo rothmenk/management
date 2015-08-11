@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class User {
 
     public static final int START_MONEY = 1000;
+    private static final boolean IS_ADMIN = false;
 
     String username;
     int money;
     ArrayList<Dog> dogs;
     ArrayList<Cat> cats;
+
 
     public User(String username) {
         this.username = username;
@@ -56,7 +58,10 @@ public class User {
     public void setCats(ArrayList<Cat> cats) {
         this.cats = cats;
     }
-
+    
+    public boolean isAdmin(){
+        return IS_ADMIN;
+    }
     
     
     @Override
