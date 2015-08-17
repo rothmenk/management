@@ -30,19 +30,29 @@ public class UserReader {
         return userFile.exists();
     }
 // ежели нет создаем файл с именем юзера и записываем в него параметры нового пользователя
-    static public User createNewUser(String username) throws IOException {
+    static public User createNewUser(String username){
         User user = new User(username);
         File userFile = new File(USER_DATA_PATH + username);
 
         if (userFile.exists()) {
             userFile.delete();
         }
-        userFile.createNewFile();
+        try {
+            userFile.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(UserReader.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         writeUser(userFile, user);
 
         return user;
     }
+    
+    static public boolean removeUser(String username){
+         File userFile = new File(USER_DATA_PATH + username);
+         return userFile.delete();
+    }
+    
 // если юзер все же существует считываем данные из файлика
     static public User readUser(String username) {
         if(username.equalsIgnoreCase("admin")){

@@ -7,7 +7,28 @@ package management.commandparser;
  */
 public abstract class BaseCommandParser {
     
-     public abstract void writeCommandHeader(); //выписываем "рут" команды
-     public abstract void parseCommand(String command); //парсируем команду
+    //выписываем "рут" команды
+     public abstract void writeCommandHeader(); 
+     //парсируем команду
+     public boolean parseCommand(String command){
+         switch (command){
+             case "help": 
+                 writeCommandList();
+                 return true;
+             case "exit":
+                 closeProgram();
+                 return true;
+         }
+         return false;
+     } 
+
+    protected void writeCommandList() {
+        System.out.println("help - список доступных команд");
+        System.out.println("exit - выход из программы");
+    }
+
+    private void closeProgram() {
+        System.exit(0);
+    }
      
 }

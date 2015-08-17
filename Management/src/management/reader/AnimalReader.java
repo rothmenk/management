@@ -17,7 +17,11 @@ public class AnimalReader {
             return DogReader.readDog(animalParams);
         }
     }
-// проверяем тип животного (в начале каждой строки с животным)
+    
+    /**
+     * проверяем тип животного (в начале каждой строки с животным)
+     * @param animalParam     
+    */
     private static boolean isCat(String animalParam) {
         if (animalParam.equalsIgnoreCase("cat")) {
             return true;
@@ -29,4 +33,3 @@ public class AnimalReader {
         }
     }
 }
-// comments

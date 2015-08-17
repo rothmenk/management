@@ -24,13 +24,15 @@ public class ParserManager {
          if (!user.isAdmin()) {
             setActualParser(new UserParser(user));
         } else {
-            setActualParser(new AdminParser(user));
+            setActualParser(new AdminParser());
         }
          
         while (true) {
             getActualParser().writeCommandHeader();
             String command = sc.nextLine();
-            getActualParser().parseCommand(command);
+            if(!getActualParser().parseCommand(command)){
+                System.out.println("Неизвестная команда!");
+            }
         }
     }
     

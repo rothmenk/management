@@ -14,13 +14,40 @@ public class UserParser extends BaseCommandParser {
         this.mUser = user;
     }
 
+    public User getUser() {
+        return mUser;
+    }
+
+    public void setUser(User mUser) {
+        this.mUser = mUser;
+    }
     @Override
     public void writeCommandHeader() {
         System.out.print(mUser.getUsername() + ": ");
     }
 
     @Override
-    public void parseCommand(String command) {
-        System.out.println("Unknoun command!");
+    public boolean parseCommand(String command) {
+        if (super.parseCommand(command)) {
+            return true;
+        }
+        switch (command) {
+            case "animalmgt" :
+                startAnimalManagement();
+                return true;
+        }
+        return false;
     }
+
+    @Override
+    protected void writeCommandList() {
+        super.writeCommandList();
+        System.out.println("animalmgt - запускает менеджер животных данного пользователя");
+    }
+
+    private void startAnimalManagement() {
+        ParserManager.setActualParser(new AnimalManagerParser(getUser()));
+    }
+
+
 }

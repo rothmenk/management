@@ -18,6 +18,7 @@ public class Management {
 
     static Scanner commandScanner = new Scanner(System.in);
     static User actualUser;
+    
 // инициализация пользователя и ожидание ввода команд
     public static void main(String[] args) {
         init();
@@ -37,11 +38,7 @@ public class Management {
             command = commandScanner.next();
 //если соглашаемся создать - создаем нового дефолтного пользователя с данным именем
             if (ReaderUtils.isYes(command)) {
-                try {
-                    actualUser = UserReader.createNewUser(userName);
-                } catch (IOException ex) {
-                    Logger.getLogger(Management.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                actualUser = UserReader.createNewUser(userName);
             } else { // или просим залогиниться заново
                 while (true) {
                     System.out.println("Enter username again: ");
