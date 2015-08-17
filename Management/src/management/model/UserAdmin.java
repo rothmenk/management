@@ -10,7 +10,7 @@ package management.model;
  * @author kir
  */
 public class UserAdmin extends User{
-    
+    // если пользователь админ грузим его с правами админа без данных
     private static final boolean IS_ADMIN = true;
 
     public UserAdmin(String username) {

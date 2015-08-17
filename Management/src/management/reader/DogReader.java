@@ -13,7 +13,7 @@ import management.model.Dog;
  * @author kir
  */
 public class DogReader {
-
+// передаем параметры собаки циферками
     public static Dog readDog(String[] dogParams) {
         String name = dogParams[1];
         int health = Integer.parseInt(dogParams[2]);

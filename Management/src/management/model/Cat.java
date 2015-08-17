@@ -56,7 +56,7 @@ public class Cat extends Animal {
         Random rand = new Random();
         return rand.nextInt(5) + MIN_STRENGTH;
     }
-
+// записываем все параметры котэ в стринг через ;
     @Override
     public String toString() {
         String tempResult = "";

@@ -19,15 +19,17 @@ import management.model.UserAdmin;
  *
  * @author kir
  */
-public class UserReader {
 
+// читаем юзера
+public class UserReader {
+// подключаемся к файлику с пользователем
     private static String USER_DATA_PATH = "userdata/users/";
-    
+// если пользователь существует грузим его файл    
     static public boolean isUserCreated(String username) {
         File userFile = new File(USER_DATA_PATH + username);
         return userFile.exists();
     }
-
+// ежели нет создаем файл с именем юзера и записываем в него параметры нового пользователя
     static public User createNewUser(String username) throws IOException {
         User user = new User(username);
         File userFile = new File(USER_DATA_PATH + username);
@@ -41,12 +43,12 @@ public class UserReader {
 
         return user;
     }
-
+// если юзер все же существует считываем данные из файлика
     static public User readUser(String username) {
         if(username.equalsIgnoreCase("admin")){
             return new UserAdmin("admin");
         }
-        try {
+        try { // пытаемся открыть файлик и считываем данные построчно (в правильном порядке)
             File userFile = new File(USER_DATA_PATH + username);
             Scanner sc = new Scanner(userFile);
             String name = sc.nextLine();
@@ -73,7 +75,8 @@ public class UserReader {
 
         return null;
     }
-
+// если информация изменилась (новый пользователь, измененный пользователь) записываем его данные
+// в файлик в виде строки через ;    
     public static void writeUser(File file, User user) {
         try {
             FileWriter writer = new FileWriter(file, true);

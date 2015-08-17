@@ -13,7 +13,7 @@ import management.model.Cat;
  * @author kir
  */
 public class CatReader {
-
+// передаем параметры животного циферками
     public static Cat readCat(String[] catParams) {
         String name = catParams[1];
         int health = Integer.parseInt(catParams[2]);

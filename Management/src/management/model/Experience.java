@@ -46,7 +46,7 @@ public class Experience {
     public void setExperiencePoints(int experiencePoints) {
         this.experiencePoints = experiencePoints;
     }
-        
+// количество опыта животного переводим в уровень и записываем оба параметра в строку        
     @Override
     public String toString() {
         String tempResult = "";

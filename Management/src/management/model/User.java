@@ -12,14 +12,14 @@ public class User {
     ArrayList<Dog> dogs;
     ArrayList<Cat> cats;
 
-
+// когда юзер только что создан делаем его дефолтным
     public User(String username) {
         this.username = username;
         this.money = START_MONEY;
         this.dogs = new ArrayList<Dog>();
         this.cats = new ArrayList<Cat>();
     }
-
+// если юзер существует берем его данные из файла
     public User(String username, int money, ArrayList<Dog> dogs, ArrayList<Cat> cats) {
         this.username = username;
         this.money = money;
@@ -63,7 +63,7 @@ public class User {
         return IS_ADMIN;
     }
     
-    
+// переводим данные юзера в строку и выписываем красиво    
     @Override
     public String toString() {
         String tempResult = "";
@@ -85,4 +85,3 @@ public class User {
     
 
 }
-// комментарии каждому методу

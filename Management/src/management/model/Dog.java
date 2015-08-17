@@ -50,7 +50,7 @@ public class Dog extends Animal {
         Random rand = new Random();
         return rand.nextInt(5) + MIN_STRANGTH;
     }
-
+// переводим все параметры собаки в стринг и записываем через ;
     @Override
     public String toString() {
         String tempResult = "";

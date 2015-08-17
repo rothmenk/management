@@ -7,7 +7,7 @@ import management.model.Animal;
  * @author kir
  */
 public class AnimalReader {
-
+// считываем животных, в зависимости от типа животного вызываем метод предка
     public static Animal readAnimal(String animalString) {
         String[] animalParams = animalString.split(";");
 
@@ -17,7 +17,7 @@ public class AnimalReader {
             return DogReader.readDog(animalParams);
         }
     }
-
+// проверяем тип животного (в начале каждой строки с животным)
     private static boolean isCat(String animalParam) {
         if (animalParam.equalsIgnoreCase("cat")) {
             return true;

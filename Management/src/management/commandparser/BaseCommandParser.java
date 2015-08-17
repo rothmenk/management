@@ -7,7 +7,7 @@ package management.commandparser;
  */
 public abstract class BaseCommandParser {
     
-     public abstract void writeCommandHeader();
-     public abstract void parseCommand(String command);
+     public abstract void writeCommandHeader(); //выписываем "рут" команды
+     public abstract void parseCommand(String command); //парсируем команду
      
 }
