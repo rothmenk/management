@@ -28,15 +28,12 @@ public class UserParser extends BaseCommandParser {
 
     @Override
     public boolean parseCommand(String command) {
-        if (super.parseCommand(command)) {
-            return true;
-        }
         switch (command) {
             case "animalmgt" :
                 startAnimalManagement();
                 return true;
         }
-        return false;
+        return super.parseCommand(command);
     }
 
     @Override

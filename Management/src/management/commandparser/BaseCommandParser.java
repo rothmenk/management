@@ -1,11 +1,15 @@
 
 package management.commandparser;
 
+import java.util.Scanner;
+
 /**
  *
  * @author kir
  */
 public abstract class BaseCommandParser {
+    
+    protected static final Scanner sc = new Scanner(System.in);
     
     //выписываем "рут" команды
      public abstract void writeCommandHeader(); 

@@ -1,5 +1,6 @@
 package management.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class User {
@@ -80,6 +81,43 @@ public class User {
         }
         
         return tempResult;
+    }
+
+    public void writeAnimalList() {
+        String tempResult = "";
+        
+        for(Dog d: getDogs()){
+            tempResult += d.toString() + "\n";
+        }
+        
+        for(Cat c: getCats()){
+            tempResult += c.toString() + "\n";
+        }
+        
+        System.out.println(tempResult);
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        ArrayList<Animal> allAnimals = new ArrayList<>();
+        for(Dog d: getDogs()){
+            allAnimals.add(d);
+        }
+        for(Cat c: getCats()){
+            allAnimals.add(c);
+        }
+        
+        return allAnimals;
+    }
+
+    public void removeAnimal(Animal a) {
+        if(getCats().contains(a)){
+            getCats().remove(a);
+            return;
+        }
+        if(getDogs().contains(a)){
+            getDogs().remove(a);
+            return;
+        }
     }
     
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package management.commandparser;
 
 import management.model.User;
@@ -25,9 +20,6 @@ public class AdminParser extends BaseCommandParser {
 
     @Override
     public boolean parseCommand(String command) {
-        if (super.parseCommand(command)) {
-            return true;
-        }
         String[] commandSegments = command.split(" ");
         switch (commandSegments[0]) {
             case "create":
@@ -47,13 +39,14 @@ public class AdminParser extends BaseCommandParser {
                     return true;
                 }
         }
-        return false;
+        return super.parseCommand(command);
     }
 
     @Override
     protected void writeCommandList() {
         super.writeCommandList();
         System.out.println("create *username* - создает нового пользователя с именем username");
+        System.out.println("remove *username* - удаляет пользователя с именем username");
     }
 
     private void createUser(String userName) {
@@ -64,7 +57,7 @@ public class AdminParser extends BaseCommandParser {
     private void removeUser(String userName) {
         if (UserReader.removeUser(userName)) {
             System.out.println("Пользователь" + userName + " был удалён");
-        }else{
+        } else {
             System.out.println("Ошибка! Пользователь " + userName + " не был найден");
         }
     }

@@ -34,10 +34,8 @@ public class Management {
             actualUser = UserReader.readUser(userName);
             System.out.println("Login completed");
         } else { // если нет - предлагаем создать нового
-            System.out.println("Profile not found, create new profile?");
-            command = commandScanner.next();
 //если соглашаемся создать - создаем нового дефолтного пользователя с данным именем
-            if (ReaderUtils.isYes(command)) {
+            if (ReaderUtils.confirmAction("Profile not found, create new profile?")) {
                 actualUser = UserReader.createNewUser(userName);
             } else { // или просим залогиниться заново
                 while (true) {
